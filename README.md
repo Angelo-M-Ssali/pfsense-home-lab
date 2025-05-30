@@ -56,6 +56,30 @@ This guide outlines the basic steps I followed to set up a secure home lab envir
 
 ---
 
+## 🪛 Troubleshooting
+
+- **pfSense Web GUI not accessible**  
+  - Double-check that the LAN interface has the correct IP address.  
+  - Verify your VirtualBox network adapter settings (set to “Internal Network” or “Bridged” as needed).  
+  - Try using `https://192.168.1.1` from another VM or host OS.
+
+- **No internet access from VMs behind pfSense**  
+  - Check the firewall rules to ensure outbound traffic is allowed from the LAN interface.  
+  - Verify the NAT configuration is correct (`Firewall > NAT`).  
+  - Ensure the pfSense VM’s WAN interface is getting an IP from your host’s network (DHCP or static).
+
+- **Snort not generating alerts**  
+  - Ensure Snort is properly configured with active rulesets.  
+  - Test with known exploits or Nmap scans to see if alerts trigger.  
+  - Check Snort logs under `Services > Snort > Alerts`.
+
+- **Slow network performance**  
+  - Allocate more RAM/CPU to the pfSense VM if possible.  
+  - Limit the number of active rules in Snort to reduce resource load.  
+  - Optimize VirtualBox adapter settings (e.g., use “Paravirtualized Network” for better performance).
+
+---
+
 ## 📌 Key Skills Practiced
 
 ✅ Network segmentation and isolation  
